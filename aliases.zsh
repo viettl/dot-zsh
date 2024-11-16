@@ -26,8 +26,10 @@ alias gcm="git commit -m"
 alias gp="git push"
 alias gl="git pull"
 alias gc="git checkout"
-alias glo="git log --oneline"
+alias glo="git log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+alias gitconfig="code ~/.gitconfig"
 
+#https://www.robinwieruch.de/mac-setup-web-development/
 # navigate to global ssh directory
 alias sshhome="cd ~/.ssh"
 # edit global ssh configuration
@@ -36,7 +38,18 @@ alias sshconfig="vim ~/.ssh/config"
 alias zshconfig="vim ~/.zshrc"
 # reload zsh configuration
 alias zshsource="source ~/.zshrc"
+#
+alias aliasconfig="code ~/zsh/aliases.zsh"
 
+# docker alias
+alias dc="docker-compose"
+#function dclear(){
+#  docker rm $(docker ps -q -f 'status=exited')
+#  docker rmi $(docker images -q -f "dangling=true")
+#}
+#export -f dclear
+# alias dcps="docker-compose ps | docker-color-output"
+# alias dps='docker ps --format "table {{.ID}}\t{{.Names}}\t{{.Networks}}\t{{.State}}\t{{.CreatedAt}}" | docker-color-output'
 
 # get machine's ip address
 alias ip="ipconfig getifaddr en0"
@@ -54,15 +67,18 @@ alias desk="cd ~/desktop"
 alias ~="cd ~" # `cd` is probably faster to type though
 alias ..="cd .."
 alias ..l="cd .. && ll"
-alias personal="cd ~/desktop/personal"
+alias ws="cd ~/desktop/workspace"
+alias personal="cd ~/desktop/workspace/personal"
 
 # exa replacements for ls
-alias l='exa -aF --icons' # Quick ls
-alias la='exa -aF --icons' # List all
-alias ll='exa -laF --icons' # Show details
-alias lm='exa -lahr --color-scale --icons -s=modified' # Recent
-alias lb='exa -lahr --color-scale --icons -s=size' # Largest / size
-alias tree='f() { exa -aF --tree -L=${1:-2} --icons };f'
+alias l='eza -aF --icons' # Quick ls
+alias la='eza -aF --icons' # List all
+alias ll='eza -laF --icons' # Show details
+alias lm='eza -lahr --color-scale --icons -s=modified' # Recent
+alias lb='eza -lahr --color-scale --icons -s=size' # Largest / size
+alias tree='f() { eza -aF --tree -L=${1:-2} --icons };f'
+alias largefiles='du -hsx -- * | sort -rh | head -10'
+alias cleanallmodule='npx npkill'
 
 # Print each PATH entry on a separate line
 alias path='echo -e ${PATH//:/\\n}'
@@ -81,7 +97,7 @@ function gitcommit() {
         git commit -m "$1"
     else
         git commit -m update # default commit message is `update`
-     fi	
+     fi
 }
 
 function gitall() {
