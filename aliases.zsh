@@ -28,6 +28,14 @@ alias gl="git pull"
 alias gc="git checkout"
 alias glo="git log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
 alias gitconfig="code ~/.gitconfig"
+alias gst="git stash"
+alias pop="git stash pop"
+alias gsta="git stash apply"
+
+# zsh
+alias openzs="open ~/.zshrc"
+alias sourcezs="source ~/.zshrc"
+
 
 #https://www.robinwieruch.de/mac-setup-web-development/
 # navigate to global ssh directory
@@ -110,3 +118,23 @@ function gitall() {
     fi # closing statement of if-else block
     git push origin HEAD
 }
+
+
+# auto fetch current and merge/rebase
+function gpull {
+  git pull origin `git rev-parse --abbrev-ref HEAD`
+}
+
+function gupd {
+  git fetch origin "$1:$1"
+}
+
+# macOS
+alias port="lsof -i"
+alias stop="kill -9"
+
+# Bun
+alias b="bun"
+alias ba="bun add"
+alias bi="bun install"
+alias br="bun run"
